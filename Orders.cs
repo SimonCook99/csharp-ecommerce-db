@@ -16,7 +16,7 @@ namespace csharp_ecommerce_db
         public DateTime Date { get; set; }
         
         [Required]
-        public int Amount { get; set; }
+        public double Amount { get; set; }
         public string Status { get; set; }
 
 
@@ -24,5 +24,19 @@ namespace csharp_ecommerce_db
         public Customers Customer { get; set; }
 
         List<Products> Products { get; set; }
+
+        public Orders(DateTime date, double amount, string status, Customers customer, List<Products> products){
+
+            Date = date;
+            Amount = amount;
+            Status = status;
+            Customer = customer;
+            Products = products;
+        }
+
+        public Orders()
+        {
+
+        }
     }
 }

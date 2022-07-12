@@ -25,5 +25,10 @@ namespace csharp_ecommerce_db
 
         List<Orders> Orders { get; set; }
 
+        public Products(string name, string description, double price){
+            Name = name;
+            Description = description;
+            Price = price;
+        }
     }
 }
