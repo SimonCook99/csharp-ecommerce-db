@@ -1,4 +1,5 @@
 ﻿using csharp_ecommerce_db;
+using Microsoft.EntityFrameworkCore;
 
 using (ECommerceContext db = new ECommerceContext()){
 
@@ -41,6 +42,14 @@ using (ECommerceContext db = new ECommerceContext()){
 
         db.SaveChanges();
         Console.WriteLine("Ordini aggiunti!");
+
+        
+        //lista degli ordini di un singolo utente
+        List<Orders> ordiniUtente = db.Orders.FromSqlRaw("SELECT * FROM orders WHERE CustomersId=" + simone.CustomersId).ToList<Orders>();
+
+        foreach (Orders o in ordiniUtente){
+            Console.WriteLine($"Ordine in data {o.Date} di prezzo {o.Amount} con stato {o.Status}");
+        }
 
     }
     catch (Exception e){
