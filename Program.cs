@@ -38,6 +38,12 @@ using (ECommerceContext db = new ECommerceContext()){
 
         foreach (Orders o in list){
             db.Add(o);
+            order_product pivot = new order_product();
+            pivot.ProductsId = prodotto1.ProductsId;
+            pivot.OrdersId = o.Id;
+            pivot.Quantity = new Random().Next(1, 10);
+            db.Add(pivot);
+            db.SaveChanges();
         }
 
         db.SaveChanges();
